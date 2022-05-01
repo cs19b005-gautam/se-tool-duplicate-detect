@@ -8,6 +8,8 @@ COPY duplicate_code_detection.py requirements.txt run_action.py entrypoint.sh /a
 RUN pip3 install -r /action/requirements.txt requests && \
     python3 -c "import nltk; nltk.download('punkt')" && \
     ln -s /root/nltk_data /usr/local/nltk_data 
+    cd action
     chmod +x *.sh
+    cd ..
 
 ENTRYPOINT ["/action/entrypoint.sh"]
